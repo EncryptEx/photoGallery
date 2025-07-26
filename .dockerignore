@@ -1,0 +1,8 @@
+# This file is used to ignore files and directories from being copied into the Docker image.
+# This helps to keep the image size small and to avoid including sensitive information.
+
+node_modules
+npm-debug.log
+.git
+.gitignore
+Dockerfile

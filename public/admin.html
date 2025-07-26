@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>Upload Photos</h1>
+        <div id="upload-container">
+            <form id="upload-form">
+                <input type="password" id="password" placeholder="Password" required>
+                <div id="drop-zone">
+                    <p>Drag & drop photos here or click to select</p>
+                    <input type="file" id="photo-input" name="photos" multiple>
+                </div>
+                <div id="preview"></div>
+                <button type="submit">Upload</button>
+            </form>
+            <div id="upload-status"></div>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+</html>
