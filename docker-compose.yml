@@ -1,0 +1,10 @@
+
+services:
+  photo-gallery:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server/uploads:/usr/src/app/server/uploads
+    env_file:
+      - ./server/.env

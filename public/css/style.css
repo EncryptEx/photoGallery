@@ -98,6 +98,69 @@ body {
     color: #ccc;
 }
 
+/* Skeleton Loader */
+.skeleton {
+    background-color: #222;
+    background-image: linear-gradient(90deg, #222, #333, #222);
+    background-size: 200px 100%;
+    background-repeat: no-repeat;
+    border-radius: 0;
+    animation: skeleton-animation 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-animation {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: calc(200px + 100%) 0;
+    }
+}
+
+/* Lightbox */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+#lightbox.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 0;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+#lightbox.show #lightbox-img {
+    transform: scale(1);
+}
+
+#lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+
 /* Admin Panel Styles */
 .admin-container {
     max-width: 800px;
