@@ -44,6 +44,13 @@ app.get('/images', async (req, res) => {
   try {
     const files = await fs.promises.readdir(UPLOADS_DIR);
     const imageInfo = await Promise.all(files.map(async (file) => {
+
+      // Check if the file is an image, capital unsensitive
+
+      if (!/\.(jpg|jpeg|png|gif)$/i.test(file.toLowerCase())) {
+        return null; // Skip non-image files
+      }
+
       const filePath = path.join(UPLOADS_DIR, file);
       const data = await fs.promises.readFile(filePath);
       let metadata = {};
@@ -65,7 +72,11 @@ app.get('/images', async (req, res) => {
         }
       };
     }));
-    res.json(imageInfo);
+
+    // Filter out null values (non-image files)
+    const filteredImages = imageInfo.filter(info => info !== null);
+
+    res.json(filteredImages);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');

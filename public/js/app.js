@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(images => {
             images.forEach(image => {
                 const item = document.createElement('div');
-                item.className = 'gallery-item';
+                item.className = 'grid-item';
 
                 const img = document.createElement('img');
                 img.src = `/uploads/${image.filename}`;
@@ -26,5 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.appendChild(metadataDiv);
                 gallery.appendChild(item);
             });
+
+            var grid = document.querySelector('.grid');
+            var msnry = new Masonry( grid, {
+            // options...
+            itemSelector: '.grid-item',
+            columnWidth: 0,
+            });
+
+            imagesLoaded( grid ).on( 'progress', function() {
+                msnry.layout();
+            });
+
+
+            // Add a sizer element for Masonry
+            const sizer = document.createElement('div');
+            sizer.className = 'grid-sizer';
+            gallery.prepend(sizer);
         });
 });
