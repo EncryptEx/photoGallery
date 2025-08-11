@@ -97,6 +97,24 @@ app.post('/upload', upload.array('photos'), (req, res) => {
     res.json({ success: true, message: 'Files uploaded successfully.' });
 });
 
+app.delete('/images/:filename', (req, res) => {
+    const { password } = req.body;
+    const { filename } = req.params;
+
+    if (password !== UPLOAD_PASSWORD) {
+        return res.status(401).json({ success: false, message: 'Invalid password.' });
+    }
+
+    const filePath = path.join(UPLOADS_DIR, filename);
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ success: false, message: 'Error deleting file.' });
+        }
+        res.json({ success: true, message: 'File deleted successfully.' });
+    });
+});
+
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });

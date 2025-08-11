@@ -6,10 +6,11 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="admin">
     <div class="admin-container">
-        <h1>Upload Photos</h1>
+        <h1>The back office</h1>
         <div id="upload-container">
+            <h2>Upload Photos</h2>
             <form id="upload-form">
                 <input type="password" id="password" placeholder="Password" required>
                 <div id="drop-zone">
@@ -20,6 +21,13 @@
                 <button type="submit">Upload</button>
             </form>
             <div id="upload-status"></div>
+        </div>
+
+        <hr>
+
+        <h2>Manage Photos</h2>
+        <div id="gallery-management">
+            <div class="image-grid" id="image-management-grid"></div>
         </div>
     </div>
     <script src="js/admin.js"></script>
